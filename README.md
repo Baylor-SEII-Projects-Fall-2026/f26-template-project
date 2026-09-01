@@ -102,9 +102,16 @@ In other words:
 
 [(back to top)](#table-of-contents)
 
+⚠️ ⚠️ ***PLEASE PLEASE PLEASE wait for a couple weeks before setting these up. The GCP has a 3 month limit on the free trial and you don't want to accidentally use it all up too early.*** ⚠️ ⚠️
+
 Only one deployed instance of your project is required. However, we require that all team members are familiar with the process of how to deploy the project to GCP, so please work together in your groups so that everyone is familiar with this workflow.
 
-GCP offers a free trial that will work for our purposes in this project. Keep in mind, however, that the free trial is not unlimited—it is up to your team to ensure that you are staying within the free trial budget. However, the budget should be more than sufficient for the purposes of this project.
+GCP offers a free trial that will work for our purposes in this project. Keep in mind, however, that the free trial is not unlimited—it is up to your team to ensure that you are staying within the free trial budget. However, the budget should be more than sufficient for the purposes of this project. Please note the following limitations of the free trial:
+- Maximum of 3 months
+- Maximum $300
+- **May require a $10 deposit that will be returned after the trial ends**
+
+Now, for the instructions:
 
 1. Open the Google Cloud Console: https://console.cloud.google.com/ and create a Google account if you don't already have one
 2. Enable the GCP free trial by hitting the "try for free" button on the home page and following the instructions.
