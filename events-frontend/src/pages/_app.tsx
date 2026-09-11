@@ -13,12 +13,14 @@ import { AppCacheProvider } from "@mui/material-nextjs/v16-pagesRouter";
 import { CssBaseline } from "@mui/material";
 
 import { EventsThemeProvider } from "@/utils/theme";
+import createEmotionCache from "@/utils/createEmotionCache";
 
 import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App(props: AppProps) {
+  const { Component, pageProps } = props;
   return (
-    <AppCacheProvider>
+    <AppCacheProvider emotionCache={createEmotionCache()} {...props}>
       <Head>
         <meta
           name="viewport"
