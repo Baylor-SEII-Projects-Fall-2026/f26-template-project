@@ -1,0 +1,16 @@
+# Dependencies and build output are recreated inside the image
+node_modules
+.pnpm-store
+.next
+out
+build
+coverage
+*.tsbuildinfo
+next-env.d.ts
+
+# Local-only files
+.git
+.vscode
+.DS_Store
+*.log
+.env*.local

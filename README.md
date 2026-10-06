@@ -122,8 +122,9 @@ Now, for the instructions:
 5. Create a Linux VM in GCP. This will be your production server
    1. Search for "Add VM Instance". This should open the instance creation page
    2. You can leave everything as default except for (click the tabs on the left):
-      1. **Networking > Firewall**: Check the options for allowing both HTTP and HTTPS traffic to the VM. This will give your VM an external IP address once it is created
-      2. **OS and Storage > Operating system and storage**: click "Change" set "Size" to 100 GB
+      1. **Machine configuration > Machine type**: `e2-standard-2` (2 VCPU (1 core), 8 GB memory)
+      2. **OS and storage > Operating system and storage**: click "Change" set "Boot disk type" to "SSD persistent disk" and "Size" to 50 GB
+      3. **Networking > Firewall**: Check the options for allowing both HTTP and HTTPS traffic to the VM. This will give your VM an external IP address once it is created
    3. Click the "Create" button
 6. Navigate to the "VM instances" tab and click the "Set up firewall rules" option
    1. Select the `default-allow-http` rule, and select "Edit" at the top of the page

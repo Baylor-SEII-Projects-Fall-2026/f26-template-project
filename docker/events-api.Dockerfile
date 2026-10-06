@@ -1,9 +1,12 @@
+# syntax=docker/dockerfile:1
 # Create a build of the project
 FROM gradle:9.7.1-jdk25 AS build
 WORKDIR /build
 COPY . .
 
-RUN ./gradlew build --no-daemon -p .
+# Cache the Gradle distribution and dependencies between builds
+RUN --mount=type=cache,id=gradle,target=/root/.gradle \
+    ./gradlew build --no-daemon -p .
 
 # Copy the build artifacts
 FROM eclipse-temurin:25
