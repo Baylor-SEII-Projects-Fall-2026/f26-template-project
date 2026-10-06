@@ -37,22 +37,26 @@ jobs:
         # Docker Compose. To change how the images are built or their actual
         # buildscripts, modify the corresponding files in the docker/ directory.
         #
+        # The currently deployed containers keep running while this builds. If
+        # the build fails, the job stops here and the old version stays up.
+        #
         # You will need to point this command to the correct Docker Compose file.
         run: |
           docker compose -f docker/production.docker-compose.yml build
 
       - name: Deploy
-        # This script simply runs the images that were built in the previous step.
-        # This uses the same Docker Compose file in the previous step.
+        # This step runs the images that were built in the previous step, using
+        # the same Docker Compose file.
         #
-        # If the frontend and backend are already running on the VM, we first
-        # need to stop them to free the port and delete them to free the
-        # container name before trying to start the new versions.
+        # We intentionally do NOT run `docker compose down` first. `up` compares
+        # each running container against its newly built image and only
+        # recreates the ones that changed, so downtime is limited to the few
+        # seconds it takes to stop the old container and start the new one.
+        # Unchanged services (like the MySQL server) are left running.
         #
-        # This command assumes that the docker compose is also set up to properly
-        # manage a MYSQL server.
+        # `--wait` makes this step fail if a container doesn't reach a running
+        # state, so a broken deploy shows up as a failed job.
         #
-        # You will need to point these commands to the correct Docker Compose file.
+        # You will need to point this command to the correct Docker Compose file.
         run: |
-          docker compose -f docker/production.docker-compose.yml down
-          docker compose -f docker/production.docker-compose.yml up -d --build
+          docker compose -f docker/production.docker-compose.yml up -d --no-build --wait

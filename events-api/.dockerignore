@@ -1,0 +1,15 @@
+# Build output and caches are recreated inside the image
+build
+.gradle
+bin
+out
+
+# Local-only files
+.git
+.idea
+.vscode
+.settings
+*.iml
+*.iws
+*.ipr
+.DS_Store
